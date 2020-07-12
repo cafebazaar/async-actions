@@ -8,7 +8,8 @@
   "license": "",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
-    "build": "bili"
+    "build": "bili",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
