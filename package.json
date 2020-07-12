@@ -1,0 +1,32 @@
+{
+  "name": "async-actions",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "author": "Bazaar Front-End Chapter",
+  "license": "",
+  "scripts": {
+    "lint": "eslint --cache --ignore-path .gitignore .",
+    "build": "bili"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.cafebazaar.ir/bazaar/common/frontend/async-actions"
+  },
+  "devDependencies": {
+    "bili": "^5.0.5",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.0.5",
+    "vue": "^2.6.11"
+  },
+  "files": [
+    "dist"
+  ]
+}
