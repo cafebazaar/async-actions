@@ -2,14 +2,13 @@
   "name": "async-actions",
   "version": "0.1.0",
   "description": "",
-  "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
+  "main": "./dist/async-actions.js",
+  "module": "./dist/async-actions.esm.js",
   "author": "Bazaar Front-End Chapter",
   "license": "",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
-    "build": "bili",
-    "postinstall": "npm run build"
+    "build": "rimraf dist && bili"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
     "vue": "^2.6.11"
   },
   "files": [
