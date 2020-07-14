@@ -1,6 +1,6 @@
 {
   "name": "@cafebazaar/async-actions",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "./dist/async-actions.cjs.js",
   "module": "./dist/async-actions.esm.js",
@@ -9,10 +9,6 @@
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
     "build": "rimraf dist && bili"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://git.cafebazaar.ir/bazaar/common/frontend/async-actions"
   },
   "devDependencies": {
     "bili": "^5.0.5",
