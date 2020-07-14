@@ -1,11 +1,11 @@
 {
-  "name": "async-actions",
-  "version": "0.1.0",
+  "name": "@cafebazaar/async-actions",
+  "version": "0.2.0",
   "description": "",
   "main": "./dist/async-actions.cjs.js",
   "module": "./dist/async-actions.esm.js",
   "author": "Bazaar Front-End Chapter",
-  "license": "",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
     "build": "rimraf dist && bili"
