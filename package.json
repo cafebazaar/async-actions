@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
-    "build": "microbundle"
+    "build": "microbundle --compress false --no-sourcemap"
   },
   "devDependencies": {
     "eslint": "^7.4.0",
