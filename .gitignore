@@ -6,3 +6,6 @@ node_modules/
 
 # Optional eslint cache
 .eslintcache
+
+# build files
+dist
