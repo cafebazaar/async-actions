@@ -13,8 +13,12 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "lint-staged": {
+    "*.js": "yarn lint --fix"
   },
   "devDependencies": {
     "@commitlint/config-angular": "^9.1.1",
@@ -25,6 +29,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.21.2",
     "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "microbundle": "^0.12.3",
     "prettier": "^2.0.5",
     "vue": "^2.6.11"
