@@ -1,6 +1,6 @@
 import wrapAsyncActions from './wrapAsyncAction';
 
-export default function (Vue) {
+export default (Vue) => {
   Vue.mixin({
     beforeCreate() {
       if (!this.$options.asyncActions) {
@@ -14,4 +14,4 @@ export default function (Vue) {
       }
     },
   });
-}
+};

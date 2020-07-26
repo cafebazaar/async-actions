@@ -1,3 +1,4 @@
+/* eslint-disable-next-line */
 import Vue from 'vue';
 import debounceFn from './utils/debounce';
 import { isNumber } from './utils/typeCheck';
