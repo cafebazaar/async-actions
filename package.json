@@ -2,16 +2,16 @@
   "name": "@cafebazaar/async-actions",
   "version": "0.2.1",
   "description": "",
-  "main": "./dist/async-actions.cjs.js",
-  "module": "./dist/async-actions.esm.js",
+  "main": "dist/async-actions.js",
+  "module": "dist/async-actions.m.js",
+  "umd:main": "dist/async-actions.umd.js",
   "author": "Bazaar Front-End Chapter",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
-    "build": "rimraf dist && bili"
+    "build": "microbundle --compress false --no-sourcemap"
   },
   "devDependencies": {
-    "bili": "^5.0.5",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
@@ -19,6 +19,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "microbundle": "^0.12.3",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "vue": "^2.6.11"
