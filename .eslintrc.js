@@ -29,5 +29,6 @@ module.exports = {
       },
     ],
     'func-names': ['off'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };
