@@ -11,17 +11,27 @@
     "lint": "eslint --cache --ignore-path .gitignore .",
     "build": "microbundle --compress false --no-sourcemap"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": "yarn lint --fix"
+  },
   "devDependencies": {
-    "eslint": "^7.4.0",
+    "@commitlint/config-angular": "^9.1.1",
+    "babel-eslint": "^10.1.0",
+    "commitlint": "^9.1.0",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-import": "^2.21.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "microbundle": "^0.12.3",
     "prettier": "^2.0.5",
-    "rimraf": "^3.0.2",
     "vue": "^2.6.11"
   },
   "files": [
