@@ -20,7 +20,7 @@ export function asyncAction(fn, {
     stateObject.error = null;
     stateObject.data = null;
     
-    Promise.resolve(fn.apply(this, args)).then((res)=>{
+    return Promise.resolve(fn.apply(this, args)).then((res)=>{
       stateObject.state = 'fulfilled';
       stateObject.data = res;
       return res;
