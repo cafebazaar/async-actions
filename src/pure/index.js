@@ -1,5 +1,5 @@
-import debounceFn from './utils/debounce';
-import { isNumber } from './utils/typeCheck';
+import debounceFn from '../utils/debounce';
+import { isNumber } from '../utils/typeCheck';
 
 export function asyncAction(fn, {
   initialData = null,
