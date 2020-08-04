@@ -4,6 +4,7 @@ import { isNumber } from '../utils/typeCheck';
 export function asyncAction(fn, {
   initialData = null,
   debounce = 0,
+  immediate = false,
 }, observableFn){
   if (debounce && (!isNumber(debounce) || debounce < 0)) {
     throw new Error('debounce option must be a positive number');
@@ -20,7 +21,7 @@ export function asyncAction(fn, {
     stateObject.error = null;
     stateObject.data = null;
     
-    Promise.resolve(fn.apply(this, args)).then((res)=>{
+    return Promise.resolve(fn.apply(this, args)).then((res)=>{
       stateObject.state = 'fulfilled';
       stateObject.data = res;
       return res;
@@ -51,6 +52,10 @@ export function asyncAction(fn, {
 
   if (debounce) {
     rtFn = debounceFn(rtFn, debounce);
+  }
+
+  if(immediate) {
+    rtFn.call(this);
   }
 
   return rtFn;
