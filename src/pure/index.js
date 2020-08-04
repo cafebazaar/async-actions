@@ -54,7 +54,11 @@ export function asyncAction(fn, {
     rtFn = debounceFn(rtFn, debounce);
   }
 
-  return immediate ? rtFn.call(this) : rtFn;
+  if(immediate) {
+    rtFn.call(this);
+  }
+
+  return rtFn;
 }
 
 export function asyncActionCreator(options){
