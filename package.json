@@ -37,7 +37,7 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "svelte": "^3.24.0"
   }
 }
