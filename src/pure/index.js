@@ -15,8 +15,8 @@ export function asyncAction(
     data: initialData,
     error: null,
   });
-  
-  let rtFn = function(...args) {
+
+  let rtFn = function (...args) {
     stateObject.state = 'pending';
     stateObject.error = null;
     stateObject.data = null;
@@ -34,38 +34,39 @@ export function asyncAction(
       });
   };
 
-  Object.defineProperties(rtFn, {
-    state: {
-      get(){
-        return stateObject.state;
-      }
-    },
-    error: {
-      get(){
-        return stateObject.error;
-      }
-    },
-    data: {
-      get(){
-        return stateObject.data;
-      }
-    }
-  });
-
   if (debounce) {
     rtFn = debounceFn(rtFn, debounce);
   }
 
-  if(immediate) {
+  Object.defineProperties(rtFn, {
+    state: {
+      get() {
+        return stateObject.state;
+      },
+    },
+    error: {
+      get() {
+        return stateObject.error;
+      },
+    },
+    data: {
+      get() {
+        return stateObject.data;
+      },
+    },
+  });
+
+  if (immediate) {
     rtFn.call(this);
   }
 
   return rtFn;
 }
 
-export function asyncActionCreator(options){
-  return (fn, callSideOptions)=> asyncAction(fn, {
-    ...options,
-    ...callSideOptions,
-  })
+export function asyncActionCreator(options) {
+  return (fn, callSideOptions) =>
+    asyncAction(fn, {
+      ...options,
+      ...callSideOptions,
+    });
 }
