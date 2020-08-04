@@ -1,11 +1,11 @@
 import debounceFn from '../utils/debounce';
 import { isNumber } from '../utils/typeCheck';
 
-export function asyncAction(fn, {
-  initialData = null,
-  debounce = 0,
-  immediate = false,
-}, observableFn){
+export function asyncAction(
+  fn,
+  { initialData = null, debounce = 0, immediate = false, ctx = null },
+  observableFn
+) {
   if (debounce && (!isNumber(debounce) || debounce < 0)) {
     throw new Error('debounce option must be a positive number');
   }
@@ -20,16 +20,18 @@ export function asyncAction(fn, {
     stateObject.state = 'pending';
     stateObject.error = null;
     stateObject.data = null;
-    
-    return Promise.resolve(fn.apply(this, args)).then((res)=>{
-      stateObject.state = 'fulfilled';
-      stateObject.data = res;
-      return res;
-    }).catch((err)=>{
-      stateObject.state = 'rejected';
-      stateObject.error = err;
-      throw err;
-    })
+
+    return Promise.resolve(fn.apply(ctx || this, args))
+      .then((res) => {
+        stateObject.state = 'fulfilled';
+        stateObject.data = res;
+        return res;
+      })
+      .catch((err) => {
+        stateObject.state = 'rejected';
+        stateObject.error = err;
+        throw err;
+      });
   };
 
   Object.defineProperties(rtFn, {
