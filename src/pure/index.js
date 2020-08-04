@@ -14,25 +14,6 @@ export function asyncAction(fn, {
     data: initialData,
     error: null,
   });
-
-  Object.defineProperties(fn, {
-    state: {
-      get(){
-        return stateObject.state;
-      }
-    },
-    error: {
-      get(){
-        return stateObject.error;
-      }
-    },
-    data: {
-      get(){
-        return stateObject.data;
-      }
-    }
-  });
-
   
   let rtFn = function(...args) {
     stateObject.state = 'pending';
@@ -49,6 +30,24 @@ export function asyncAction(fn, {
       throw err;
     })
   };
+
+  Object.defineProperties(rtFn, {
+    state: {
+      get(){
+        return stateObject.state;
+      }
+    },
+    error: {
+      get(){
+        return stateObject.error;
+      }
+    },
+    data: {
+      get(){
+        return stateObject.data;
+      }
+    }
+  });
 
   if (debounce) {
     rtFn = debounceFn(rtFn, debounce);
