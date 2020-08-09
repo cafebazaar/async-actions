@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { asyncAction } from '../pure';
+import { asyncAction } from './pure';
 
 export default function(fn, options){
   return asyncAction(fn, options, (stateObject)=>{
