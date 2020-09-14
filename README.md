@@ -45,7 +45,7 @@ const myAsyncAction = asyncAction(
 
 ### Vue.js
 
-There are two ways for using Async-Actions in a Vue.js project.
+In the Vue version, `Vue.observable` provided by default as the observable function and you don't need to pass it. There are two ways for using Async-Actions in a Vue.js project.
 
 #### 1. Define actions in component options
 
