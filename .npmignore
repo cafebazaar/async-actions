@@ -1,0 +1,4 @@
+build.sh
+commitlint.config.js
+.prettierrc
+.gitignore

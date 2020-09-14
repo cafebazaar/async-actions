@@ -1,9 +1,9 @@
-import debounceFn from '../utils/debounce';
-import { isNumber } from '../utils/typeCheck';
+import debounceFn from './utils/debounce';
+import { isNumber } from './utils/typeCheck';
 
 export function asyncAction(
   fn,
-  { initialData = null, debounce = 0, immediate = false, ctx = null },
+  { initialData = null, debounce = 0, immediate = false, ctx = null } = {},
   observableFn
 ) {
   if (debounce && (!isNumber(debounce) || debounce < 0)) {
