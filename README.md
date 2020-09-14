@@ -33,9 +33,9 @@ yarn add @cafebazaar/async-actions
 
 ## Usage
 
-You can use Async-Actions in pure JS. Also there are built in extension for Vue.js and svelte.
+You can use Async-Actions in [pure JS](#pure-js). Also there are built in extension for [Vue.js](#vuejs) and [svelte](#svelte).
 
-#### Pure JS
+### Pure JS
 
 You can define an async-action using `asyncAction` method which gets a handler function and configuration options as its parameters. When using the pure version, you must provide an observable function which used for updating action properties.
 
@@ -45,12 +45,19 @@ import customObservable from 'utils/observable';
 
 const myAsyncAction = asyncAction(
   Promise.resolve('Hello'),
-  {
-    debounce: 500,
-  },
+  options,
   customObservable
 );
 ```
+
+#### Options
+
+| Property    | Description                                                             | type     | Required | Default |
+| ----------- | ----------------------------------------------------------------------- | -------- | -------- | ------- |
+| handler     | action's handler                                                        | function | true     |         |
+| immediate   | determines handler function should be called immediately after creation | boolean  | false    | false   |
+| debounce    | debounce time in miliseconds                                            | number   | false    | 0       |
+| initialData | initial value of `data` property of action                              | any      | false    | null    |
 
 ### Vue.js
 
@@ -103,6 +110,8 @@ export default {
 </script>
 ```
 
+List of all options are available [here](#options).
+
 If an actions does not need any options, you can define it as a function.
 
 ```javascript
@@ -118,26 +127,85 @@ export default {
 </script>
 ```
 
-##### Options
-
-| Property    | Description                                                             | type     | Required | Default |
-| ----------- | ----------------------------------------------------------------------- | -------- | -------- | ------- |
-| handler     | action's handler                                                        | function | true     |         |
-| immediate   | determines handler function should be called immediately after creation | boolean  | false    | false   |
-| debounce    | debounce time in miliseconds                                            | number   | false    | 0       |
-| initialData | initial value of `data` property of action                              | any      | false    | null    |
-
 #### 2. Create asyncActions outside of components
 
 In this way you can create asyncActions anywhere and use them as normal functions.
 
 ```javascript
 // usersActions.js
+
 import { asyncAction } from '@cafebazaar/async-actions/vue';
 
-export const getUsers = asyncAction(() => someApiCall(), {
-  initialData: [],
-});
+export const getUsers = asyncAction(() => someApiCall(), options);
+```
+
+And after that, you can import and use it inside Vue components:
+
+```vue
+<template>
+  <div>
+    <div v-if="getUsers.state === 'pending'">
+      Fetching Users List. Please Wait...
+    </div>
+    <div v-else-if="getUsers.error">
+      Oops. Somthing Went Wrong :(
+    </div>
+    <div v-else>
+      <ul v-for="user in getUsers.data">
+        <li>{{ user.name }}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+import { getUsers } from './usersActions';
+
+export default {
+  name: 'UsersList',
+  computed: {
+    getUsers(){
+      return getUsers;
+    }
+  },
+  created(){
+    this.getUsers();
+  }
+};
+```
+
+### Svelte
+
+In the Svelte version, `Store.writable` is used for every observable prop(`state`, `data`, and `error`) and you don't need to provide `observableFn`. You can simply do:
+
+```html
+<script>
+  import asyncAction from '@cafebazaar/async-actions/src/svelte';
+  let myPromise = asyncAction(function () {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve('My Data!!'), 5000);
+    });
+  }, options);
+
+  let { state, data, error } = myPromise;
+
+  // execute async function
+  myPromise();
+</script>
+
+<main>
+  <ul>
+    <li>
+      Status: {$state}
+    </li>
+    <li>
+      Data: {$data}
+    </li>
+    <li>
+      Error: {$error}
+    </li>
+  </ul>
+</main>
 ```
 
 ```javascript
@@ -158,3 +226,7 @@ export default {
 }
 </script>
 ```
+
+List of all options are available [here](#options).
+
+You can use asyncAction outside of svelte file and import it and use it directly inside DOM.
