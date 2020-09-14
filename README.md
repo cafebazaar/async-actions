@@ -115,7 +115,7 @@ List of all options are available [here](#options).
 If an actions does not need any options, you can define it as a function.
 
 ```javascript
-script>
+<script>
 export default {
   name: 'Login',
   asyncActions: {
