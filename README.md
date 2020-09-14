@@ -33,7 +33,7 @@ yarn add @cafebazaar/async-actions
 
 ## Usage
 
-You can use Async-Actions in [pure JS](#pure-js). Also there are built in extension for [Vue.js](#vue) and [svelte](#svelte).
+You can use Async-Actions in [pure JS](#pure-js). Also there are built in extension for [Vue.js](#vuejs) and [svelte](#svelte).
 
 ### Pure JS
 
