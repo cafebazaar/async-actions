@@ -63,10 +63,10 @@ export function asyncAction(
   return rtFn;
 }
 
-export function asyncActionCreator(options) {
+export function asyncActionCreator(options, observableFn) {
   return (fn, callSideOptions) =>
     asyncAction(fn, {
       ...options,
       ...callSideOptions,
-    });
+    }, observableFn);
 }
