@@ -8,6 +8,15 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 Actions are just simple functions. Async-Actions adds `state`, `error` and `data` properties to your functions and updates these properties dynamically.
 
+#### Action lifecycle and possible values of the `state` property
+
+| Value        | Description                                                                                          |
+| ------------ | ---------------------------------------------------------------------------------------------------- |
+| notInitiated | Action has not called yet                                                                            |
+| pending      | Action has called, but it has not been completed yet.                                                |
+| fulfilled    | Action has been completed successfully, and the result value is accessible using the `data` property |
+| rejected     | Action has been rejected with an error which is accessible using `error` property                    |
+
 ## Instalation
 
 You can install Async-Actions with NPM, Yarn.
