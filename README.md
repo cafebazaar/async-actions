@@ -6,7 +6,7 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 ## How It Works
 
-Actions are just simple functions. Async-Actions adds `status`, `error` and `data` properties to your functions and updates these properties dynamically.
+Actions are just simple functions. Async-Actions adds `state`, `error` and `data` properties to your functions and updates these properties dynamically.
 
 ## Instalation
 
@@ -63,7 +63,7 @@ then, you can define async-actions in all components using `asyncActions` proper
 ```javascript
 <template>
   <div>
-    <div v-if="fetchUsers.status === 'pending'">
+    <div v-if="fetchUsers.state === 'pending'">
       Fetching Users List. Please Wait...
     </div>
     <div v-else-if="fetchUsers.error">
