@@ -141,7 +141,7 @@ export const getUsers = asyncAction(() => someApiCall(), options);
 
 And after that, you can import and use it inside Vue components:
 
-```vue
+```javascript
 <template>
   <div>
     <div v-if="getUsers.state === 'pending'">
@@ -206,25 +206,6 @@ In the Svelte version, `Store.writable` is used for every observable prop(`state
     </li>
   </ul>
 </main>
-```
-
-```javascript
-// UsersList.vue
-import { getUsers } from './userActions';
-
-<script>
-export default {
-  name: 'UsersList',
-  created() {
-    getUsers();
-  },
-  computed: {
-    users() {
-      return getUsers.data;
-    }
-  }
-}
-</script>
 ```
 
 List of all options are available [here](#options).
