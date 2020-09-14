@@ -179,7 +179,7 @@ export default {
 
 In the Svelte version, `Store.writable` is used for every observable prop(`state`, `data`, and `error`) and you don't need to provide `observableFn`. You can simply do:
 
-```svelte
+```html
 <script>
 	import asyncAction from '@cafebazaar/async-actions/src/svelte';
 	let myPromise = asyncAction(function(){
