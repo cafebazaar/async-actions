@@ -114,7 +114,7 @@ export default {
 | Property    | Description                                                             | type     | Required | Default |
 | ----------- | ----------------------------------------------------------------------- | -------- | -------- | ------- |
 | handler     | action's handler                                                        | function | true     |         |
-| immediate   | determinse handler function should be called immediatily after creation | boolean  | false    | false   |
+| immediate   | determines handler function should be called immediately after creation | boolean  | false    | false   |
 | debounce    | debounce time in miliseconds                                            | number   | false    | 0       |
 | initialData | initial value of `data` property of action                              | any      | false    | null    |
 
