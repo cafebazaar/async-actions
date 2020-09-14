@@ -29,13 +29,13 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "microbundle": "^0.12.3",
-    "prettier": "^2.0.5",
-    "vue": "^2.6.11"
+    "prettier": "^2.0.5"
   },
   "files": [
     "dist"
   ],
   "peerDependencies": {
-    "svelte": "^3.24.0"
+    "svelte": "^3.24.0",
+    "vue": "^2.6.12"
   }
 }
