@@ -6,8 +6,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
-    "build": "microbundle --compress false --no-sourcemap",
-    "deploy": "./publish.sh"
+    "build": "./build.sh"
   },
   "husky": {
     "hooks": {
@@ -31,9 +30,6 @@
     "microbundle": "^0.12.3",
     "prettier": "^2.0.5"
   },
-  "files": [
-    "dist"
-  ],
   "peerDependencies": {
     "svelte": "^3.24.0",
     "vue": "^2.6.12"
