@@ -2,14 +2,12 @@
   "name": "@cafebazaar/async-actions",
   "version": "0.3.0",
   "description": "",
-  "main": "dist/async-actions.js",
-  "module": "dist/async-actions.m.js",
-  "umd:main": "dist/async-actions.umd.js",
   "author": "Bazaar Front-End Chapter",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
-    "build": "microbundle --compress false --no-sourcemap"
+    "build": "microbundle --compress false --no-sourcemap",
+    "deploy": "./publish.sh"
   },
   "husky": {
     "hooks": {
