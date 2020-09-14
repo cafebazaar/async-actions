@@ -139,3 +139,22 @@ export const getUsers = asyncAction(() => someApiCall(), {
   initialData: [],
 });
 ```
+
+```javascript
+// UsersList.vue
+import { getUsers } from './userActions';
+
+<script>
+export default {
+  name: 'UsersList',
+  created() {
+    getUsers();
+  },
+  computed: {
+    users() {
+      return getUsers.data;
+    }
+  }
+}
+</script>
+```
