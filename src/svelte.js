@@ -18,6 +18,6 @@ export default function(fn, options){
       })
     })
 
-    return stateObject;
+    return newStateObject;
   });
 }
