@@ -211,3 +211,7 @@ In the Svelte version, `Store.writable` is used for every observable prop(`state
 List of all options are available [here](#options).
 
 You can use asyncAction outside of svelte file and import it and use it directly inside DOM.
+
+## License
+
+[MIT](https://github.com/cafebazaar/async-actions/blob/master/LICENSE)
