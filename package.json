@@ -4,6 +4,10 @@
   "description": "",
   "author": "Bazaar Front-End Chapter",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cafebazaar/async-actions.git"
+  },
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
     "build": "./build.sh"
