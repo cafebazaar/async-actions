@@ -8,6 +8,13 @@
     "type": "git",
     "url": "https://github.com/cafebazaar/async-actions.git"
   },
+  "keywords": [
+    "vue",
+    "svelte",
+    "async",
+    "promise",
+    "loading"
+  ],
   "scripts": {
     "lint": "eslint --cache --ignore-path .gitignore .",
     "build": "./build.sh"
