@@ -6,11 +6,11 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 ### Before(in VueJS)
 
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png)
+![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png?raw=true)
 
 ### After(in VueJS)
 
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png)
+![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png?raw=true)
 
 ## How It Works
 
