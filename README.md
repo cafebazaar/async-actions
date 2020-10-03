@@ -8,7 +8,7 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 ### Before and After(in VueJS)
 
-Before Async Actions       |  After ASync Actions Ocean
+Before Async Actions       |  After Async Actions
 :-------------------------:|:-------------------------:
 ![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png?raw=true)  |  ![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png?raw=true)
 
