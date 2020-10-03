@@ -4,6 +4,14 @@ Handling async actions(like API calls) is so tedious. Showing loading state and 
 
 Async-Actions proposes a more efficient way of handling those actions without code duplications.
 
+### Before(in VueJS)
+
+![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png)
+
+### After(in VueJS)
+
+![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png)
+
 ## How It Works
 
 Actions are just simple functions. Async-Actions adds `state`, `error` and `data` properties to your functions and updates these properties dynamically.
