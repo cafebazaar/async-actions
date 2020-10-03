@@ -6,20 +6,20 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 ## How It Works
 
-Actions are just simple functions. Async-Actions adds `state`, `error` and `data` properties to your functions and updates these properties dynamically.
+Actions are just simple functions. Async-Actions adds `state`, `error`, and `data` properties to your functions and dynamically updates these properties.
 
 #### Action lifecycle and possible values of the `state` property
 
-| Value        | Description                                                                                          |
-| ------------ | ---------------------------------------------------------------------------------------------------- |
-| notInitiated | Action has not called yet                                                                            |
-| pending      | Action has called, but it has not been completed yet.                                                |
-| fulfilled    | Action has been completed successfully, and the result value is accessible using the `data` property |
-| rejected     | Action has been rejected with an error which is accessible using `error` property                    |
+| Value        | Description                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------- |
+| notInitiated | Action has not been called yet.                                                                       |
+| pending      | Action has been called, but it has not been completed yet.                                            |
+| fulfilled    | Action has been completed successfully, and the result value is accessible using the `data` property. |
+| rejected     | Action has been rejected with an error which is accessible using `error` property.                    |
 
-## Instalation
+## Installation
 
-You can install Async-Actions with NPM, Yarn.
+You can install Async-Actions with NPM or Yarn.
 
 ```bash
 npm install @cafebazaar/async-actions --save
@@ -33,11 +33,11 @@ yarn add @cafebazaar/async-actions
 
 ## Usage
 
-You can use Async-Actions in [pure JS](#pure-js). Also there are built in extension for [Vue.js](#vuejs) and [svelte](#svelte).
+You can use Async-Actions in [pure JS](#pure-js). Also there are built in extensions for [Vue.js](#vuejs) and [Svelte](#svelte).
 
 ### Vue.js
 
-In the Vue version, `Vue.observable` provided by default as the observable function and you don't need to pass it. There are two ways for using Async-Actions in a Vue.js project.
+`Vue.observable` provided by default as the observable function in the Vue version, and you don't need to pass it. There are two ways to use Async-Actions in a Vue.js project.
 
 #### 1. Define actions in component options
 
@@ -50,20 +50,22 @@ import AsyncActions from '@cafebazaar/async-actions/vue';
 Vue.use(AsyncActions);
 ```
 
-then, you can define async-actions in all components using `asyncActions` property.
+Then, you can define async-actions in all components using `asyncActions` property.
 
 ```javascript
 <template>
   <div>
-    <div v-if="fetchUsers.state === 'pending'">
+    <div v-if="getUsers.state === 'pending'">
       Fetching Users List. Please Wait...
     </div>
-    <div v-else-if="fetchUsers.error">
+    <div v-else-if="getUsers.error">
       Oops. Somthing Went Wrong :(
     </div>
     <div v-else>
-      <ul v-for="user in fetchUsers.data">
-        <li>{{ user.name }}</li>
+      <ul>
+        <li v-for="user in getUsers.data" :key="user.id">
+          {{ user.name }}
+        </li>
       </ul>
     </div>
   </div>
@@ -73,7 +75,7 @@ then, you can define async-actions in all components using `asyncActions` proper
 export default {
   name: 'UsersList',
   asyncActions: {
-    fetchUsers: {
+    getUsers: {
       handler() {
         return someApiCall();
       },
@@ -86,12 +88,14 @@ export default {
 </script>
 ```
 
-List of all options are available [here](#options).
+The List of all options is available [here](#options).
 
-If an actions does not need any options, you can define it as a function.
+If an action does not need any options, you can define it as a function for the sake of simplicity.
 
 ```javascript
 <script>
+import { loginApi } from './api';
+
 export default {
   name: 'Login',
   asyncActions: {
@@ -114,14 +118,17 @@ export default {
 
 #### 2. Create asyncActions outside of components
 
-In this way you can create asyncActions anywhere and use them as normal functions.
+In this way, you can create asyncActions anywhere and use them as regular functions.
 
 ```javascript
 // usersActions.js
 
 import { asyncAction } from '@cafebazaar/async-actions/vue';
+import { someApiCall } from './api';
 
-export const getUsers = asyncAction(() => someApiCall(), options);
+export const getUsers = asyncAction(() => someApiCall(), {
+  initialData: [],
+});
 ```
 
 And after that, you can import and use it inside Vue components:
@@ -129,15 +136,17 @@ And after that, you can import and use it inside Vue components:
 ```javascript
 <template>
   <div>
-    <div v-if="getUsers.state === 'pending'">
+    <div v-if="getUsersAction.state === 'pending'">
       Fetching Users List. Please Wait...
     </div>
-    <div v-else-if="getUsers.error">
+    <div v-else-if="getUsersAction.error">
       Oops. Somthing Went Wrong :(
     </div>
     <div v-else>
-      <ul v-for="user in getUsers.data">
-        <li>{{ user.name }}</li>
+      <ul>
+        <li v-for="user in getUsersAction.data" :key="user.id">
+          {{ user.name }}
+        </li>
       </ul>
     </div>
   </div>
@@ -149,19 +158,19 @@ import { getUsers } from './usersActions';
 export default {
   name: 'UsersList',
   computed: {
-    getUsers(){
+    getUsersAction(){
       return getUsers;
     }
   },
   created(){
-    this.getUsers();
+    getUsers();
   }
 };
 ```
 
 ### Svelte
 
-In the Svelte version, `Store.writable` is used for every observable prop(`state`, `data`, and `error`) and you don't need to provide `observableFn`. You can simply do:
+In the Svelte version, `Store.writable` is used for every observable prop(`state`, `data`, and `error`) and, you don't need to provide `observableFn`. You can simply do:
 
 ```html
 <script>
@@ -193,7 +202,7 @@ In the Svelte version, `Store.writable` is used for every observable prop(`state
 </main>
 ```
 
-List of all options are available [here](#options).
+The List of all options is available [here](#options).
 
 You can use asyncAction outside of svelte file and import it and use it directly inside DOM.
 
