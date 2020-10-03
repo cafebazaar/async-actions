@@ -6,11 +6,85 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 ### Before(in VueJS)
 
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png?raw=true)
+```javascript
+<template>
+  <div class="my-component">
+    <div v-if="isLoading" class="my-component__loading">
+  		Loading...
+  	</div>
+    <div v-else-if="error" class="my-component__error">
+      {{ error }}
+  	</div>
+    <div v-else-if="users" class="my-component__data">
+      <span v-for="user in users">
+        {{ user.name }}
+      </span>
+  	</div>
+  </div>
+</template>
+<script>
+  import users from '@/api/users';
+  export default {
+    name: 'MyComponent',
+    data(){
+      return {
+        isLoading: true,
+        error: null,
+        users: null,
+      }
+    },
+    created(){
+      this.getUsers();
+    },
+    methods: {
+      getUsers(){
+        this.isLoading = true;
+        return users.get().then(users => {
+        	this.users = users;
+        }).catch(error => {
+        	this.error = error;
+        }).finally(()=>{
+        	this.isLoading = false;
+        })
+      },
+    }
+  }
+</script>
+```
 
 ### After(in VueJS)
 
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png?raw=true)
+```javascript
+<template>
+  <div class="my-component">
+    <div v-if="users.state === 'pending'" class="my-component__loading">
+  		Loading...
+  	</div>
+    <div v-else-if="users.state === 'rejected'" class="my-component__error">
+      {{ users.error }}
+  	</div>
+    <div v-else-if="users.state === 'fulfilled'" class="my-component__data">
+      <span v-for="user in users.data">
+        {{ user.name }}
+      </span>
+  	</div>
+  </div>
+</template>
+<script>
+  import users from '@/api/users';
+  export default {
+    name: 'MyComponent',
+    asyncActions: {
+      users: {
+        handler(){
+          return users.get();
+        }
+        immediate: true,
+      }
+    }
+  }
+</script>
+```
 
 ## How It Works
 
