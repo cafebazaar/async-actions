@@ -43,30 +43,6 @@ yarn add @cafebazaar/async-actions
 
 You can use Async-Actions in [pure JS](#pure-js). Also there are built in extensions for [Vue.js](#vuejs) and [Svelte](#svelte).
 
-### Pure JS
-
-You can define an async-action using the `asyncAction` method, which gets a handler function and configuration options as its parameters. When using the pure version, you must provide an observable function which used for updating action properties.
-
-```javascript
-import { asyncAction } from '@cafebazaar/async-actions/pure';
-import customObservable from 'utils/observable';
-
-const myAsyncAction = asyncAction(
-  Promise.resolve('Hello'),
-  options,
-  customObservable
-);
-```
-
-#### Options
-
-| Property    | Description                                                             | type     | Required | Default |
-| ----------- | ----------------------------------------------------------------------- | -------- | -------- | ------- |
-| handler     | action's handler                                                        | function | true     |         |
-| immediate   | determines handler function should be called immediately after creation | boolean  | false    | false   |
-| debounce    | debounce time in milliseconds                                           | number   | false    | 0       |
-| initialData | the initial value of `data` property of action                          | any      | false    | null    |
-
 ### Vue.js
 
 `Vue.observable` provided by default as the observable function in the Vue version, and you don't need to pass it. There are two ways to use Async-Actions in a Vue.js project.
@@ -138,6 +114,15 @@ export default {
 };
 </script>
 ```
+
+#### Options
+
+| Property    | Description                                                             | type     | Required | Default |
+| ----------- | ----------------------------------------------------------------------- | -------- | -------- | ------- |
+| handler     | action's handler                                                        | function | true     |         |
+| immediate   | determines handler function should be called immediately after creation | boolean  | false    | false   |
+| debounce    | debounce time in miliseconds                                            | number   | false    | 0       |
+| initialData | initial value of `data` property of action                              | any      | false    | null    |
 
 #### 2. Create asyncActions outside of components
 
@@ -228,6 +213,23 @@ In the Svelte version, `Store.writable` is used for every observable prop(`state
 The List of all options is available [here](#options).
 
 You can use asyncAction outside of svelte file and import it and use it directly inside DOM.
+
+### Pure JS
+
+You can define an async-action using `asyncAction` method which gets a handler function and configuration options as its parameters. When using the pure version, you must provide an observable function which used for updating action properties.
+
+```javascript
+import { asyncAction } from '@cafebazaar/async-actions/pure';
+import customObservable from 'utils/observable';
+
+const myAsyncAction = asyncAction(
+  Promise.resolve('Hello'),
+  options,
+  customObservable
+);
+```
+
+List of all options are available [here](#options).
 
 ## License
 
