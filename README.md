@@ -4,13 +4,13 @@ Handling async actions(like API calls) is so tedious. Showing loading state and 
 
 Async-Actions proposes a more efficient way of handling those actions without code duplications.
 
-### Before(in VueJS)
 
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png?raw=true)
 
-### After(in VueJS)
+### Before and After(in VueJS)
 
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png?raw=true)
+Before Async Actions       |  After ASync Actions Ocean
+:-------------------------:|:-------------------------:
+![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png?raw=true)  |  ![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png?raw=true)
 
 ## How It Works
 
