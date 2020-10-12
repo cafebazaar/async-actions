@@ -1,3 +1,7 @@
+<div style="text-align:center; margin-bottom: 30px;">
+  <img src="https://user-images.githubusercontent.com/2771377/95751339-57fbe900-0cab-11eb-8eda-39d8e2807fca.png" />
+</div>
+
 ## Overview
 
 Handling async actions(like API calls) is so tedious. Showing loading state and handling options like debouncing needs a lot of code duplications.
