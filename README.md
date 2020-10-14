@@ -8,13 +8,7 @@ Handling async actions(like API calls) is so tedious. Showing loading state and 
 
 Async-Actions proposes a more efficient way of handling those actions without code duplications.
 
-
-
-### Before and After(in VueJS)
-
-Before Async Actions       |  After Async Actions
-:-------------------------:|:-------------------------:
-![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/before.png?raw=true)  |  ![Before using Async Actions](https://github.com/cafebazaar/async-actions/blob/master/docs/images/after.png?raw=true)
+![Async Action Before/After Comparison](https://user-images.githubusercontent.com/2771377/96008074-0a6ab200-0e4c-11eb-8440-90026e4cf449.png)
 
 ## How It Works
 
@@ -201,15 +195,9 @@ In the Svelte version, `Store.writable` is used for every observable prop(`state
 
 <main>
   <ul>
-    <li>
-      Status: {$state}
-    </li>
-    <li>
-      Data: {$data}
-    </li>
-    <li>
-      Error: {$error}
-    </li>
+    <li>Status: {$state}</li>
+    <li>Data: {$data}</li>
+    <li>Error: {$error}</li>
   </ul>
 </main>
 ```
