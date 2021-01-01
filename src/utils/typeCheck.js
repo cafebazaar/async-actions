@@ -5,5 +5,9 @@ export function isNumber(num) {
 }
 
 export function isFunction(val) {
-  return val && {}.toString.call(val) === '[object Function]';
+  return (
+    Object.prototype.toString.call(val) === '[object Function]' ||
+    typeof val === 'function' ||
+    val instanceof Function
+  );
 }
