@@ -18,7 +18,7 @@ export default {
             const { handler, ...options } = configs;
 
             if (!isFunction(handler)) {
-              throw new Error('handler must be a function');
+              throw new Error('[async-actions] handler must be a function');
             }
 
             this[action] = asyncAction(handler, {

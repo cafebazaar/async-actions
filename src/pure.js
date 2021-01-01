@@ -54,6 +54,11 @@ export function asyncAction(
         return stateObject.data;
       },
     },
+    pending: {
+      get() {
+        return stateObject.state === 'pending';
+      },
+    },
   });
 
   if (immediate) {
