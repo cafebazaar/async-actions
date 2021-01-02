@@ -12,7 +12,7 @@ Async-Actions proposes a more efficient way of handling those actions without co
 
 ## How It Works
 
-Actions are just simple functions. Async-Actions adds `state`, `error`, and `data` properties to your functions and dynamically updates these properties.
+Actions are just simple functions. Async-Actions adds `state`, `error`, `pending` and `data` properties to your functions and dynamically updates these properties.
 
 #### Action lifecycle and possible values of the `state` property
 
@@ -22,6 +22,8 @@ Actions are just simple functions. Async-Actions adds `state`, `error`, and `dat
 | pending      | Action has been called, but it has not been completed yet.                                            |
 | fulfilled    | Action has been completed successfully, and the result value is accessible using the `data` property. |
 | rejected     | Action has been rejected with an error which is accessible using `error` property.                    |
+
+For checking if an action is in the **pending** status or not, you can also use the `pending` property on the action, which is more convenient.
 
 ## Installation
 
